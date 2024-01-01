@@ -77,7 +77,6 @@ class RegistrationType extends AbstractType
                     ],
                     'constraints' => [
                         new Assert\NotBlank(),
-                        new Assert\Length(['min'=>' 2','max'=> '180']),
                     ]
                 ],
                 'second_options' => [
@@ -90,7 +89,6 @@ class RegistrationType extends AbstractType
                     'label' =>'Confirmation du mot de passe',
                     'constraints' => [
                         new Assert\NotBlank(),
-                        new Assert\Length(['min'=>' 2','max'=> '180']),
                     ]
                 ],
                 'invalid_message'=> 'Les mots de passe ne corrspondent pas.'
