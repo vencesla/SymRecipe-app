@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Recipe;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Ingredient;
@@ -47,6 +48,19 @@ class AppFixtures extends Fixture
             }
 
             $manager->persist($recepie);
+        }
+
+        for($i = 0; $i <= 10; $i++){
+            $user = new User();
+            $user->setFullName($this->faker->name())
+                ->setPseudo(mt_rand(0,1) == 1? $this->faker->firstName() : null)
+                ->setEmail($this->faker->email())
+                ->setRoles(['ROLE_USER'])
+                ->setPassword('password')
+                ->setPlainPassword('password');
+
+
+            $manager->persist($user);
         }
 
         $manager->flush();
